@@ -27,7 +27,7 @@ def crear_app(db_path="pedidos.db"):
             return jsonify(error="Datos invalidos"), 400
         with conectar() as con:
             cur = con.execute("INSERT INTO pedidos (producto, cantidad) VALUES (?, ?)",
-                              (producto, cantidad ))
+                              (producto, cantidad +1 ))
             nuevo_id = cur.lastrowid
         return jsonify(id=nuevo_id, producto=producto, cantidad=cantidad), 201
 
